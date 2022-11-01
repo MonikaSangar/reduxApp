@@ -5,16 +5,21 @@ import navigationString from '../constants/navigationString';
 import * as Screens from '../Screens'
 
 const Stack = createNativeStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 function Routes() {
     return (
       <NavigationContainer>
-        <Stack.Navigator 
+        {/* <Stack.Navigator 
         // screenOptions={{headerShown:false}}
-        >
+        > */}
+           <Tab.Navigator >
           <Stack.Screen name={navigationString.HOME} component={Screens.Home} />
-          <Stack.Screen name={navigationString.PROFILE} component={Screens.Profile} />
-        </Stack.Navigator>
+          <Stack.Screen name={navigationString.REGISTER} component={Screens.Register} />
+          </Tab.Navigator>
+        {/* </Stack.Navigator> */}
       </NavigationContainer>
     );
   }

@@ -1,15 +1,11 @@
-import { StyleSheet } from "react-native";
-import colorPath from "../../constants/colorPath";
-import { moderateScale, moderateScaleVertical } from "../../styles/responsive";
 
+import { StyleSheet } from "react-native";
+import colorPath from '../../constants/colorPath';
+import { moderateScale, moderateScaleVertical, textScale } from "../../styles/responsive";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-
-
     },
     cart:{
         flexDirection:"row",
@@ -25,7 +21,29 @@ const styles = StyleSheet.create({
         
     },
     txtStyle:{
+       color:colorPath.white
+    },
+    flatStyle: {
+        flexDirection: "row", 
+        alignItems: 'center', 
+        backgroundColor:colorPath.white,
+        padding: moderateScale(8), 
+        borderRadius: moderateScale(8), 
+        justifyContent:'space-between',
+        marginTop:16
+    },
+    addBtnStyle: {
+        marginLeft: 16,
+        backgroundColor:colorPath.purple,
+        height: moderateScaleVertical(48),
+        width: moderateScale(40),
+        borderRadius:moderateScale(10),
+        alignItems: 'center',
+        justifyContent: "center"
+    },
+    txtStyles:{
         color:colorPath.white
     }
 });
+
 export default styles;

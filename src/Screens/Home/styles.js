@@ -29,12 +29,13 @@ const styles = StyleSheet.create({
         backgroundColor:colorPath.white,
         padding: moderateScale(8), 
         borderRadius: moderateScale(8), 
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        marginTop:16
     },
     addBtnStyle: {
         marginLeft: 16,
         backgroundColor:colorPath.purple,
-        height: moderateScaleVertical(40),
+        height: moderateScaleVertical(48),
         width: moderateScale(40),
         borderRadius:moderateScale(10),
         alignItems: 'center',

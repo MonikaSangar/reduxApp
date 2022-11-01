@@ -1,18 +1,18 @@
 import types from "./types";
 
-export function increment(data){
+export function increment(data,data2){
     console.log(data,"DATA IN ACTIONS")
     return{
         type:types.INCREMENT,
-        payload: data
+        payload:{quantity:data,id:data2}
     }
 
 }
 
-export function decrement(data){
+export function decrement(data,data2){
     return{
         type:types.DECREMENT,
-        payload: data
+        payload: {quantity:data,id:data2}
     }
 
 }

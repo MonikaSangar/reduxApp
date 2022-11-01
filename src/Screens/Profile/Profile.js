@@ -1,79 +1,63 @@
 //import liraries
 import React, { useEffect, useState } from 'react';
 import { Button, Text, TouchableOpacity, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import colorPath from '../../constants/colorPath';
 import navigationString from '../../constants/navigationString';
-import { decrement, increment } from '../../redux/actions';
+import { decrement, increment } from '../../redux/action';
 import store from '../../redux/store';
+import { moderateScale, moderateScaleVertical } from '../../styles/responsive';
 import styles from './styles';
 
 
+
+
 const Profile = ({navigation,route}) => {
-    const [data, setData]=useState()
+    console.log('props',route)
+  const itemData = route.params
+  console.log(itemData.id,"fhdfhadsjkfhajksfhjadshfajkshfjks")
 
-  
+  const myData = useSelector(state=> state.myData)
+  console.log(myData,"mydatatatastatatat")
+  let index = myData.findIndex(itemId=>itemId.id==itemData.id)
+  console.log(index,"indexindexindex")
+  let newValue = myData[index]
 
-    const fetchData = ()=>{
-        let homeScreenData = route?.params
-        if(!!homeScreenData){
-            setData(homeScreenData)
-        }
-        console.log(homeScreenData, "homeScreenData")
+  const onInc = (item) => {
+    // alert(JSON.stringify(item))
+    store.dispatch(increment(item.quantity,item.id))
+}
+
+const onDec =(item) => {
+   
+    if(item.quantity>0){
+        store.dispatch(decrement(item.quantity,item.id))
+    }else{
+        return
     }
-
-    useEffect(() => {
-
-        fetchData();
-
-        const unsubscribe = store.subscribe(() => {
-            let value = store.getState().num 
-            setData(value)
-        })
-        return () => {
-            unsubscribe()
-        }
-    }, [route?.params])
-    const onInc = () => {
-       
-        store.dispatch(increment(data))
-        navigation.navigate(navigationString.HOME, number)
-      
-    }
-    
-    const onDec = () => {
-        if (number >0){
-            store.dispatch(decrement(data))
-        }
-        else {
-           return
-        }
-        
-    }
-
+          
+}
 
     return (
-        <View style={styles.container}>
-            <View style={styles.cart}>
-            <TouchableOpacity
-                onPress={onDec}
-                >
-                <Text style={styles.txtStyle}>-</Text>
-            </TouchableOpacity>
-            <Text style={styles.txtStyle}>{data}</Text>
-            <TouchableOpacity
-                onPress={onInc}
-                >
-                  <Text style={styles.txtStyle}>+</Text>
-            </TouchableOpacity>
-            
-            </View>
-            <Button 
-            title='click'
-            onPress={()=>{
-                navigation.navigate(navigationString.HOME,data)
-            }}
-            >
-
-            </Button>
+       
+        <View   style={styles.flatStyle}>
+            <View >
+                        <Text>{newValue.title}</Text>
+                        <Text>{newValue.desc}</Text>
+                    </View>
+                   <View style={styles.cart}>
+                        <TouchableOpacity
+                            onPress={()=>onDec(newValue)}
+                        >
+                            <Text style={styles.txtStyle}>-</Text>
+                        </TouchableOpacity>
+                        <Text style={styles.txtStyle}>{newValue.quantity}</Text>
+                        <TouchableOpacity
+                            onPress={()=>onInc(newValue)}
+                        >
+                            <Text style={styles.txtStyle}>+</Text>
+                        </TouchableOpacity>
+                    </View>
         </View>
     );
 };
