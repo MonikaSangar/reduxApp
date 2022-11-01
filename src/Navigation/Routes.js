@@ -15,7 +15,8 @@ function Routes() {
         {/* <Stack.Navigator 
         // screenOptions={{headerShown:false}}
         > */}
-           <Tab.Navigator >
+           <Tab.Navigator scree
+           >
           <Stack.Screen name={navigationString.HOME} component={Screens.Home} />
           <Stack.Screen name={navigationString.REGISTER} component={Screens.Register} />
           </Tab.Navigator>
