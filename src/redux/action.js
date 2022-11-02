@@ -16,3 +16,10 @@ export function decrement(data,data2){
     }
 
 }
+export function defaultadata(data){
+    return{
+        type:types.DEFAULTDATA,
+        payload:data
+    }
+
+}

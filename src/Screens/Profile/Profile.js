@@ -40,7 +40,8 @@ const onDec =(item) => {
 
     return (
        
-        <View   style={styles.flatStyle}>
+        <TouchableOpacity onPress={()=>navigation.navigate(navigationString.HOME)}
+          style={styles.flatStyle}>
             <View >
                         <Text>{newValue.title}</Text>
                         <Text>{newValue.desc}</Text>
@@ -58,7 +59,7 @@ const onDec =(item) => {
                             <Text style={styles.txtStyle}>+</Text>
                         </TouchableOpacity>
                     </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

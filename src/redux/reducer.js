@@ -1,4 +1,14 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import types from "./types";
+
+const storeData= async (mainArr) => {
+    try {
+      await AsyncStorage.setItem('userData',JSON.stringify(mainArr))
+      console.log("data saved succesfully")
+    } catch(e) {
+      console.log("error in saving data")
+    }
+}
 
 let initial_state = {
     
@@ -38,6 +48,7 @@ export function  incdec (state = initial_state , action){
             {
                 mainArr[index].quantity=data+1
             }
+            storeData(mainArr)
             return {...state,myData:mainArr}
         }
             
@@ -50,7 +61,13 @@ export function  incdec (state = initial_state , action){
             {
                 mainArr[index].quantity=data-1
             }
+            storeData(mainArr)
             return {...state,myData:mainArr}
+        }
+        case types.DEFAULTDATA:{
+            let data = action.payload
+            console.log("data in default data ", data )
+            return {...state,myData:data}
         }
     
         default:

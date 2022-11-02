@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
@@ -6,6 +7,7 @@ import navigationString from '../../constants/navigationString';
 import { decrement, increment } from '../../redux/action';
 import store from '../../redux/store';
 import styles from './styles';
+
 
 
 const Home = ({ navigation, route }) => {
@@ -19,8 +21,7 @@ const Home = ({ navigation, route }) => {
         const onDec =(item) => {
 
             store.dispatch(decrement(item.quantity,item.id))
-            if(item.quantity<=0)
-            return
+            
         }
         const renderItem = ({ item , index}) => {
             return (

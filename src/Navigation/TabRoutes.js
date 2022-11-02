@@ -8,14 +8,20 @@ const Tab = createBottomTabNavigator();
 
 function Routes() {
     return (
-      <NavigationContainer>
+  
         <Tab.Navigator
-        // screenOptions={{headerShown:false}}
-        >
+       screenOptions={{
+   
+   tabBarShowLabel:false
+   
+       }}
+          
+
+       >
           <Tab.Screen  name={navigationString.HOME} component={Screens.Home} />
-          <Tab.Screen  name={navigationString.REGISTER} component={Screens.Register} />
+       
         </Tab.Navigator>
-      </NavigationContainer>
+
     );
   }
   
