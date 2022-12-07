@@ -25,7 +25,7 @@ const Profile = ({navigation,route}) => {
 
   const onInc = (item) => {
     // alert(JSON.stringify(item))
-    store.dispatch(increment(item.quantity,item.id))
+    store.dispatch(increment(item.quantity,item.id))                                                                                                                                        
 }
 
 const onDec =(item) => {
